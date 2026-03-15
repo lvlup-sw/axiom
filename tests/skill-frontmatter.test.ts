@@ -5,7 +5,7 @@ import { parse as parseYaml } from 'yaml';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
-const INVOKABLE_SKILLS = ['audit', 'critique', 'harden', 'distill', 'verify', 'scan'];
+const INVOKABLE_SKILLS = ['audit', 'critique', 'harden', 'distill', 'verify', 'scan', 'humanize'];
 const ALL_SKILLS = ['backend-quality', ...INVOKABLE_SKILLS];
 
 function parseFrontmatter(content: string): Record<string, unknown> | null {

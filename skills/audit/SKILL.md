@@ -1,6 +1,6 @@
 ---
 name: audit
-description: "Run a comprehensive backend quality audit across all seven dimensions. Orchestrates scan, critique, harden, distill, and verify skills, deduplicates findings, and produces a unified report with verdict. Use when assessing overall codebase health. Triggers: 'audit backend', 'full quality check', 'run audit', or /axiom:audit. Do NOT use for targeted checks — use individual skills instead."
+description: "Run a comprehensive backend quality audit across all eight dimensions. Orchestrates scan, critique, harden, distill, verify, and humanize skills, deduplicates findings, and produces a unified report with verdict. Use when assessing overall codebase health. Triggers: 'audit backend', 'full quality check', 'run audit', or /axiom:audit. Do NOT use for targeted checks — use individual skills instead."
 user-invokable: true
 metadata:
   author: lvlup-sw
@@ -14,7 +14,7 @@ metadata:
 
 ## Overview
 
-The anchor skill that orchestrates all other axiom skills to produce a comprehensive backend quality report. Runs deterministic checks and qualitative assessments across all 7 dimensions, deduplicates findings, computes per-dimension metrics, and delivers a unified verdict.
+The anchor skill that orchestrates all other axiom skills to produce a comprehensive backend quality report. Runs deterministic checks and qualitative assessments across all 8 dimensions, deduplicates findings, computes per-dimension metrics, and delivers a unified verdict.
 
 ## Triggers
 
@@ -52,6 +52,7 @@ Run each specialized skill in sequence, passing the scope:
 2. **`axiom:harden`** — Observability (DIM-2) + Resilience (DIM-7)
 3. **`axiom:distill`** — Hygiene (DIM-5) + Topology (DIM-1)
 4. **`axiom:verify`** — Test Fidelity (DIM-4) + Contracts (DIM-3)
+5. **`axiom:humanize`** — Prose Quality (DIM-8)
 
 Each skill produces findings in the standard format: `@skills/backend-quality/references/findings-format.md`
 
@@ -65,7 +66,7 @@ Merge findings from all skills using these rules:
 
 ### Step 5: Coverage Check
 
-Verify all 7 dimensions were assessed. If any dimension has zero findings and zero checks:
+Verify all 8 dimensions were assessed. If any dimension has zero findings and zero checks:
 - **Warning:** "DIM-N ({name}) was not assessed — no checks or findings produced"
 - This may indicate the scope doesn't contain code relevant to that dimension
 

@@ -5,8 +5,8 @@ import { parse as parseYaml } from 'yaml';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
-const ALL_DIMENSIONS = ['topology', 'observability', 'contracts', 'test-fidelity', 'hygiene', 'architecture', 'resilience'];
-const INVOKABLE_SKILLS = ['audit', 'critique', 'harden', 'distill', 'verify', 'scan'];
+const ALL_DIMENSIONS = ['topology', 'observability', 'contracts', 'test-fidelity', 'hygiene', 'architecture', 'resilience', 'prose-quality'];
+const INVOKABLE_SKILLS = ['audit', 'critique', 'harden', 'distill', 'verify', 'scan', 'humanize'];
 
 function parseFrontmatter(content: string): Record<string, unknown> | null {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -17,12 +17,12 @@ function parseFrontmatter(content: string): Record<string, unknown> | null {
 }
 
 describe('Dimension Coverage', () => {
-  it('DimensionsTaxonomy_AllSeven_DefinedInDimensionsMd', () => {
+  it('DimensionsTaxonomy_AllEight_DefinedInDimensionsMd', () => {
     const path = resolve(ROOT, 'skills/backend-quality/references/dimensions.md');
     expect(existsSync(path), 'dimensions.md missing').toBe(true);
 
     const content = readFileSync(path, 'utf-8');
-    const expectedHeaders = ['DIM-1', 'DIM-2', 'DIM-3', 'DIM-4', 'DIM-5', 'DIM-6', 'DIM-7'];
+    const expectedHeaders = ['DIM-1', 'DIM-2', 'DIM-3', 'DIM-4', 'DIM-5', 'DIM-6', 'DIM-7', 'DIM-8'];
     for (const dim of expectedHeaders) {
       expect(content, `Missing dimension: ${dim}`).toContain(dim);
     }
