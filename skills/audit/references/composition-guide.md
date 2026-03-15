@@ -13,6 +13,7 @@ The audit skill invokes a fixed set of specialized skills:
 | 3 | `axiom:harden` | Observability, Resilience |
 | 4 | `axiom:distill` | Hygiene, Topology |
 | 5 | `axiom:verify` | Test Fidelity, Contracts |
+| 6 | `axiom:humanize` | Prose Quality |
 
 **Execution order matters:** `scan` runs first so specialized skills can reference its deterministic findings when layering qualitative assessment.
 
@@ -41,7 +42,7 @@ When `scan` and a qualitative skill both flag the same issue, merge them. The de
 After deduplication, compute the coverage matrix:
 
 ```text
-For each dimension (DIM-1 through DIM-7):
+For each dimension (DIM-1 through DIM-8):
   - deterministic_checks: count of scan checks run for this dimension
   - qualitative_assessed: was a specialized skill invoked for this dimension?
   - finding_count: total findings (post-dedup)
@@ -83,7 +84,7 @@ const verdict = (HIGH_count > 0 || MEDIUM_count > 5)
 ### Finding Ordering
 
 Within each severity tier, order findings by:
-1. Dimension (DIM-1 first, DIM-7 last)
+1. Dimension (DIM-1 first, DIM-8 last)
 2. Evidence file path (alphabetical)
 3. Evidence line number (ascending)
 

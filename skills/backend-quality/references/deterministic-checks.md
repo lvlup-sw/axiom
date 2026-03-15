@@ -170,6 +170,68 @@ Each check has: ID, pattern, what it detects, severity, and false-positive guida
 - **Detects:** Retry logic that could loop forever
 - **False positives:** Loops with break conditions that aren't pattern-matched
 
+## DIM-8: Prose Quality
+
+### PQ-8.1: AI vocabulary clustering
+- **Pattern:** Count of `(additionally|crucial|delve|foster|garner|intricate|landscape|pivotal|tapestry|testament|underscore|vibrant)` per paragraph; flag if >=3
+- **Severity:** MEDIUM
+- **Detects:** Clustering of words disproportionately used by language models
+- **False positives:** Technical contexts where "landscape" means literal landscape, or "crucial" is genuinely appropriate
+
+### PQ-8.2: Chatbot collaborative artifacts
+- **Pattern:** `(I hope this helps|Of course!|Certainly!|You're absolutely right|Would you like|let me know if|here is a)`
+- **Severity:** HIGH
+- **Detects:** Chatbot correspondence language left in shipped content
+- **False positives:** Legitimate user-facing chat interfaces; FAQ sections
+
+### PQ-8.3: Knowledge-cutoff disclaimers
+- **Pattern:** `(as of (my|this|the) (last|latest)|up to my last training|based on available information|while specific details are (limited|scarce))`
+- **Severity:** HIGH
+- **Detects:** AI model disclaimers about incomplete knowledge left in documentation
+- **False positives:** Legitimate date-scoped statements ("as of the latest release")
+
+### PQ-8.4: Sycophantic openers
+- **Pattern:** `^(Great question|That's a great|Excellent point|Absolutely[!,]|What a (great|wonderful|fantastic))`
+- **Severity:** HIGH
+- **Detects:** People-pleasing language inappropriate for technical documentation
+- **False positives:** None in technical docs; rare in any professional writing
+
+### PQ-8.5: Em dash density
+- **Pattern:** Count of `\u2014` (em dash) per file; flag if density > 1 per 100 words
+- **Severity:** LOW
+- **Detects:** Overuse of em dashes mimicking punchy sales writing
+- **False positives:** Quoted dialogue; style guides that favor em dashes
+
+### PQ-8.6: Superficial -ing analyses
+- **Pattern:** `(highlighting|underscoring|emphasizing|ensuring|reflecting|symbolizing|contributing to|cultivating|fostering|encompassing|showcasing)\s+(the|its|a|an)`
+- **Severity:** MEDIUM
+- **Detects:** Present participle phrases tacked on for fake depth
+- **False positives:** Active voice descriptions of ongoing processes
+
+### PQ-8.7: Inflated significance
+- **Pattern:** `(serves as a testament|stands as a reminder|pivotal (role|moment)|indelible mark|key turning point|evolving landscape|setting the stage|focal point of)`
+- **Severity:** MEDIUM
+- **Detects:** Inflated language that elevates mundane topics to cosmic importance
+- **False positives:** Historical or genuinely significant events
+
+### PQ-8.8: Promotional language
+- **Pattern:** `(boasts a|in the heart of|groundbreaking|renowned|breathtaking|must-visit|stunning|nestled)`
+- **Severity:** MEDIUM
+- **Detects:** Loss of neutral tone, especially on cultural/heritage topics
+- **False positives:** Marketing copy where promotional tone is intentional
+
+### PQ-8.9: Filler phrases
+- **Pattern:** `(in order to|due to the fact that|at this point in time|in the event that|has the ability to|it is worth noting that|it is important to note)`
+- **Severity:** LOW
+- **Detects:** Wordy phrases that can be simplified
+- **False positives:** Legal or formal contexts where precision requires verbosity
+
+### PQ-8.10: Generic positive conclusions
+- **Pattern:** `(the future looks bright|exciting times|looking forward to|great potential|paving the way|on the right track)`
+- **Severity:** MEDIUM
+- **Detects:** Vague upbeat endings without substance
+- **False positives:** Genuine forward-looking statements with specific plans attached
+
 ## Extensibility
 
 Projects can add custom checks via `.axiom/checks.md` at the repo root. Format matches this file — one section per dimension, each check with pattern, severity, description, and false-positive guidance. Custom checks are loaded alongside the built-in catalog by the `scan` skill.

@@ -15,7 +15,7 @@ This skill defines the shared foundation for all axiom backend quality skills. I
 
 ## Dimension Taxonomy
 
-Seven canonical quality dimensions: `@skills/backend-quality/references/dimensions.md`
+Eight canonical quality dimensions: `@skills/backend-quality/references/dimensions.md`
 
 | ID | Name | What it assesses |
 |----|------|-----------------|
@@ -26,6 +26,7 @@ Seven canonical quality dimensions: `@skills/backend-quality/references/dimensio
 | DIM-5 | Hygiene | Dead code, vestigial patterns, evolutionary leftovers |
 | DIM-6 | Architecture | SOLID, coupling, cohesion, dependency direction |
 | DIM-7 | Resilience | Resource management, timeouts, failure handling |
+| DIM-8 | Prose Quality | AI-writing patterns, documentation authenticity |
 
 ## Finding Format
 

@@ -22,7 +22,7 @@ describe('Plugin Structure', () => {
   });
 
   it('SkillsDirectory_ContainsExpectedSubdirs', () => {
-    const expected = ['backend-quality', 'audit', 'critique', 'harden', 'distill', 'verify', 'scan'];
+    const expected = ['backend-quality', 'audit', 'critique', 'harden', 'distill', 'verify', 'scan', 'humanize'];
     for (const dir of expected) {
       const path = resolve(ROOT, 'skills', dir);
       expect(existsSync(path), `Missing skill directory: ${dir}`).toBe(true);

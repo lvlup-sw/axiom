@@ -4,7 +4,7 @@ import { resolve, join } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '..');
 
-const SKILLS_WITH_REFS = ['backend-quality', 'audit', 'critique', 'harden', 'distill', 'verify', 'scan'];
+const SKILLS_WITH_REFS = ['backend-quality', 'audit', 'critique', 'harden', 'distill', 'verify', 'scan', 'humanize'];
 
 describe('Cross References', () => {
   it.each(SKILLS_WITH_REFS)('AllSkills_CrossReferences_ResolveToExistingFiles — %s', (skill) => {
