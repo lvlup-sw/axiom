@@ -1,6 +1,6 @@
 {
   "name": "@lvlup-sw/axiom",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Backend code quality skills for Claude Code",
   "type": "module",
   "scripts": {
